@@ -41,7 +41,7 @@ export const BUSINESS_CONFIG = {
 
   // Official Logo Asset
   logo: {
-    src: "/images/branding/ms-track-tyres-logo.webp",
+    src: "/images/branding/ms-track-tyres-logo-transparent.png",
     alt: "MS TRACK TYRES"
   },
 

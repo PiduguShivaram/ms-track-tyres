@@ -26,12 +26,12 @@ export const GALLERY_ITEMS = [
     aspect: "wide"
   },
   {
-    id: "gallery-burnout-traction",
-    title: "Traction & Compound Test",
-    caption: "High-heat acceleration and tyre compound adhesion demonstration.",
-    category: "Sport / Track",
-    image: "/images/gallery/04-traction-burnout.webp",
-    aspect: "tall"
+    id: "gallery-shop-inventory",
+    title: "Shopfloor Tyre Inventory",
+    caption: "Organized performance radial stock ready for immediate motorcycle fitment.",
+    category: "Workshop Stock",
+    image: "/images/gallery/04-shop-tyre-inventory.webp",
+    aspect: "wide"
   },
   {
     id: "gallery-brand-roster",

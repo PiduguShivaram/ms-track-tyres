@@ -74,6 +74,8 @@ export function initNavbarInteractions() {
     menu.classList.add('is-open');
     if (backdrop) backdrop.classList.add('is-visible');
     document.body.classList.add('nav-drawer-open');
+    const firstLink = menu.querySelector('a');
+    if (firstLink) firstLink.focus();
   }
 
   function closeMenu() {
@@ -82,6 +84,7 @@ export function initNavbarInteractions() {
     menu.classList.remove('is-open');
     if (backdrop) backdrop.classList.remove('is-visible');
     document.body.classList.remove('nav-drawer-open');
+    toggleBtn.focus();
   }
 
   if (toggleBtn && menu) {
