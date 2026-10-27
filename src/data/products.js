@@ -110,7 +110,7 @@ export const PRODUCTS = [
     verifiedPrice: null,
     stockStatus: "Contact to Confirm",
     image: "/images/products/apollo-tramplr-xr.webp",
-    photoBadge: "Shopfloor Stock",
+    photoBadge: "All-Terrain Compass Block",
     description: "Dual-purpose off/on-road tyre featuring interlocking tread blocks with compass-dial design and stone ejector channels.",
     highlights: ["Rugged block pattern", "Gravel & mud drainage", "Reinforced casing plies"]
   },

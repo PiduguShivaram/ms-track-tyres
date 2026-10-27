@@ -43,25 +43,25 @@ export const GALLERY_ITEMS = [
   },
   {
     id: "gallery-tread-macro",
-    title: "Directional Siping Detail",
-    caption: "Close-up macro of directional water drainage grooves.",
+    title: "WSBK Flash Siping Detail",
+    caption: "High-resolution macro of Pirelli Diablo WSBK lightning flash siping and silica tread.",
     category: "Tyre Tread",
     image: "/images/gallery/06-lean-tread-macro.webp",
     aspect: "wide"
   },
   {
-    id: "gallery-alloy-wheel",
-    title: "Alloy Wheel & Disc Bead",
-    caption: "Precision rim interface with disc brake rotor assembly.",
-    category: "Workshop Stock",
+    id: "gallery-traction-warmup",
+    title: "Compound Traction Warmup",
+    caption: "High-friction tyre compound temperature warmup demonstrating shoulder adhesion.",
+    category: "Sport / Track",
     image: "/images/gallery/07-alloy-wheel-disc.webp",
     aspect: "square"
   },
   {
-    id: "gallery-inventory-racks",
-    title: "Adventure & Commuter Stacks",
-    caption: "Multi-surface block tread and commuter motorcycle tyre consignments.",
-    category: "Workshop Stock",
+    id: "gallery-adventure-compass",
+    title: "All-Terrain Compass Block Tread",
+    caption: "Apollo Tramplr XR dual-purpose multi-surface block pattern with stone ejectors.",
+    category: "Tyre Tread",
     image: "/images/gallery/08-adventure-block-tread.webp",
     aspect: "wide"
   }
