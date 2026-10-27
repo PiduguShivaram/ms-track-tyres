@@ -12,6 +12,8 @@ import { renderBrands } from './components/brands.js';
 import { renderServices } from './components/services.js';
 import { renderContact, initContactInteractions } from './components/contact.js';
 import { renderMobileBar } from './components/mobileBar.js';
+import { renderWelcomeOverlay, initWelcomeOverlay } from './components/welcomeOverlay.js';
+import './styles/welcome.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,16 +24,21 @@ class MSApp {
   }
 
   init() {
-    // 1. Render image-first UI components
+    // 1. Render image-first UI components (including welcome overlay if initial visit)
     this.renderLayout();
 
-    // 2. Setup Lenis Smooth Scroll
+    // 2. Initialize Welcome Intro Overlay (animated sequence, session storage, auto-exit)
+    initWelcomeOverlay(() => {
+      ScrollTrigger.refresh();
+    });
+
+    // 3. Setup Lenis Smooth Scroll
     this.setupSmoothScroll();
 
-    // 3. Initialize Interactive Component Logic
+    // 4. Initialize Interactive Component Logic
     this.setupComponentInteractions();
 
-    // 4. Initialize Scroll Reveals
+    // 5. Initialize Scroll Reveals
     initScrollAnimations();
 
     console.log('%c MS TRACK TYRES %c Image-First Website Active • Peddapalli, Telangana ', 
@@ -42,6 +49,7 @@ class MSApp {
 
   renderLayout() {
     this.appElement.innerHTML = `
+      ${renderWelcomeOverlay()}
       ${renderNavbar()}
       <main>
         ${renderHero()}

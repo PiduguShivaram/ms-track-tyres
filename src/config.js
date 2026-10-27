@@ -45,6 +45,28 @@ export const BUSINESS_CONFIG = {
     alt: "MS TRACK TYRES"
   },
 
+  // Premium Welcome Overlay Configuration
+  welcomeOverlay: {
+    enabled: true,
+    durationMs: 4000, // Intro stays visible for ~4 seconds before smooth exit
+    businessName: "MS TRACK TYRES",
+    tagline: "High Performance Motorcycle Tyre Specialists",
+    location: "Peddapalli, Telangana, India",
+    landmark: "Beside Trinity Engineering College, Bandarikunta",
+    phone: "7569512495",
+    whatsappPhone: "917569512495",
+    logoSrc: "/images/branding/ms-track-tyres-logo.webp",
+    logoFallback: "/images/branding/ms-track-tyres-logo.png",
+    // Verified promotional spotlight (neutral & accurate, never fabricated)
+    offer: {
+      badge: "VERIFIED PEDDAPALLI STORE",
+      title: "Explore Our Latest Tyre Collections",
+      description: "Direct manufacturer sourcing, genuine fitment & specialized compound consultation.",
+      ctaText: "Chat on WhatsApp"
+    },
+    skipText: "Skip Intro"
+  },
+
   // WhatsApp Message Generator Templates
   whatsapp: {
     generalEnquiry: "Hello MS TRACK TYRES, I would like to enquire about motorcycle tyres. Please share available options and pricing for Pedapally store.",
