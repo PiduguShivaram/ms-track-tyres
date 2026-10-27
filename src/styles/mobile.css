@@ -1,0 +1,957 @@
+/* ==========================================================================
+   MS TRACK TYRES — MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS
+   ========================================================================== */
+
+/* Universal Mobile Overflow Protection */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+}
+
+body.nav-drawer-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET ADAPTATIONS (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .section {
+    padding: 70px 0;
+  }
+
+  .photo-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .catalogue-filters-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filter-actions {
+    grid-column: span 2;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .services-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SMARTPHONE ADAPTATIONS (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Prevent iOS Safari Auto-Zoom on form interaction */
+  input[type="text"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="email"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  /* Body safe padding for sticky mobile bar */
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* --- Navigation Bar --- */
+  .site-nav {
+    height: 64px;
+    background: rgba(8, 10, 14, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-container {
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .nav-logo-img {
+    height: 32px;
+    width: auto;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .btn-call {
+    display: none; /* Moved into mobile drawer & bottom bar */
+  }
+
+  .btn-wa {
+    padding: 8px 12px;
+    min-height: 40px;
+    font-size: 0.75rem;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    flex-shrink: 0;
+    z-index: 102;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .menu-toggle:active {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: var(--accent-red);
+  }
+
+  .menu-toggle .bar {
+    width: 22px;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: transform var(--transition-normal), opacity var(--transition-fast);
+    transform-origin: center;
+  }
+
+  /* Hamburger to 'X' animation */
+  .menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Nav Drawer */
+  .nav-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(8, 10, 14, 0.98);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-bottom: 1px solid var(--border-medium);
+    flex-direction: column;
+    padding: 20px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+    gap: 4px;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  }
+
+  .nav-menu.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu .nav-link {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+    display: block;
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+
+  .nav-menu .nav-link:active,
+  .nav-menu .nav-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--accent-red);
+  }
+
+  .nav-drawer-footer {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .drawer-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-tech);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    min-height: 48px;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .drawer-btn-call {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-medium);
+    color: #ffffff;
+  }
+
+  .drawer-btn-call:active {
+    background: rgba(255, 40, 59, 0.15);
+    border-color: var(--accent-red);
+  }
+
+  .drawer-btn-wa {
+    background: #25d366;
+    color: #0b141a;
+  }
+
+  .drawer-btn-wa:active {
+    background: #20ba5a;
+  }
+
+  .drawer-location-tag {
+    text-align: center;
+    font-family: var(--font-tech);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  /* Scrim Backdrop */
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 98;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-backdrop.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* --- Fixed Mobile Bottom Action Bar --- */
+  .mobile-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(56px + env(safe-area-inset-bottom, 0px));
+    padding: 4px 8px calc(4px + env(safe-area-inset-bottom, 0px));
+    background: rgba(8, 10, 14, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 95;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.7);
+  }
+
+  .mobile-bar-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 1;
+    height: 100%;
+    min-height: 46px;
+    padding: 4px 4px;
+    color: var(--text-muted);
+    font-family: var(--font-tech);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .mobile-bar-btn .bar-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .mobile-bar-btn:active,
+  .mobile-bar-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .mobile-bar-btn:active .bar-icon {
+    transform: scale(1.15);
+  }
+
+  .mobile-bar-btn.call-action {
+    color: #f87171;
+  }
+  .mobile-bar-btn.call-action:active {
+    color: #ff283b;
+    background: rgba(255, 40, 59, 0.15);
+  }
+
+  .mobile-bar-btn.wa-action {
+    color: #25d366;
+  }
+  .mobile-bar-btn.wa-action:active {
+    color: #34d399;
+    background: rgba(37, 211, 102, 0.15);
+  }
+
+  /* --- Image-Dominant Hero Mobile --- */
+  .hero-section.hero-photo-dominant {
+    min-height: 520px;
+    margin-top: 64px;
+    height: auto;
+    padding: 30px 0 20px 0;
+    align-items: flex-end;
+  }
+
+  .hero-photo-badge {
+    top: 12px;
+    right: 12px;
+    padding: 6px 10px;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-content-wrapper {
+    padding: 0 16px 16px 16px;
+  }
+
+  .hero-content-card {
+    max-width: 100%;
+    padding: 20px 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-logo-img {
+    width: 130px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 14px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-ghost {
+    width: 100%;
+    padding: 10px 10px;
+    min-height: 44px;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    justify-content: center;
+  }
+
+  .hero-wa-pill {
+    padding-top: 10px;
+  }
+
+  .hero-wa-link {
+    font-size: 0.75rem;
+  }
+
+  /* --- Section Spacing --- */
+  .section {
+    padding: 44px 0;
+  }
+
+  .section-container {
+    padding: 0 16px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+    line-height: 1.15;
+  }
+
+  .section-desc {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  /* --- Tyre Gallery Mobile (Swipeable Horizontal Filter Chips) --- */
+  .gallery-section {
+    overflow: hidden;
+  }
+
+  .gallery-filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 16px 8px;
+    margin: 0 -16px 20px -16px;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  .gallery-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    min-height: 40px;
+  }
+
+  .photo-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .photo-card-info {
+    padding: 16px 18px;
+  }
+
+  .photo-title {
+    font-size: 1.1rem;
+  }
+
+  .photo-caption {
+    font-size: 0.8125rem;
+    margin-bottom: 12px;
+  }
+
+  .lightbox-dialog {
+    max-height: 92vh;
+    width: 95%;
+    margin: auto;
+    border-radius: var(--radius-md);
+  }
+
+  .lightbox-media {
+    max-height: 45vh;
+  }
+
+  .lightbox-info {
+    padding: 16px 18px;
+  }
+
+  .lightbox-title {
+    font-size: 1.15rem;
+  }
+
+  /* --- Size Finder Mobile --- */
+  .search-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .search-input-wrapper {
+    margin-bottom: 12px;
+  }
+
+  .search-input {
+    height: 52px;
+    font-size: 16px !important;
+    padding-left: 48px;
+  }
+
+  .search-icon {
+    left: 16px;
+  }
+
+  .search-validation {
+    font-size: 0.8125rem;
+    padding: 6px 12px;
+    margin-bottom: 18px;
+  }
+
+  .quick-sizes {
+    margin-bottom: 20px;
+  }
+
+  .quick-sizes-label {
+    font-size: 0.6875rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .size-chip {
+    padding: 8px 14px;
+    font-size: 0.8125rem;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* --- Catalogue Mobile --- */
+  .catalogue-filters-bar {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .filter-select {
+    height: 48px;
+    font-size: 16px !important;
+    padding: 0 14px;
+  }
+
+  .filter-actions {
+    grid-column: span 1;
+  }
+
+  .btn-reset-filters {
+    height: 46px;
+  }
+
+  .catalogue-meta-bar {
+    margin-bottom: 20px;
+    padding: 0 2px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .product-card-photo-stage {
+    min-height: 210px;
+    max-height: 250px;
+    padding: 12px;
+  }
+
+  .product-card-body {
+    padding: 16px 16px 0 16px;
+  }
+
+  .product-name {
+    font-size: 1.25rem;
+  }
+
+  .product-size-callout {
+    padding: 8px 12px;
+  }
+
+  .size-value {
+    font-size: 1.05rem;
+  }
+
+  .product-card-actions {
+    padding: 0 16px 18px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+
+  .btn-product-wa {
+    padding: 12px 14px;
+    font-size: 0.8125rem;
+    min-height: 46px;
+  }
+
+  .btn-toggle-compare {
+    padding: 12px 14px;
+    min-height: 46px;
+  }
+
+  /* --- Brands Mobile (Refined 2-Column Grid) --- */
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .brand-photo-stage {
+    min-height: 125px;
+    max-height: 150px;
+    padding: 10px;
+  }
+
+  .brand-badge-pill {
+    bottom: 6px;
+    left: 8px;
+    font-size: 0.65rem;
+    padding: 2px 7px;
+  }
+
+  .brand-card-content {
+    padding: 12px 10px;
+  }
+
+  .brand-card-header {
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .brand-category-tag {
+    font-size: 0.625rem;
+  }
+
+  .brand-status-tag {
+    font-size: 0.58rem;
+    padding: 2px 5px;
+  }
+
+  .brand-models {
+    margin-bottom: 10px;
+  }
+
+  .models-label {
+    font-size: 0.65rem;
+    margin-bottom: 2px;
+  }
+
+  .models-inline {
+    font-size: 0.7rem;
+    line-height: 1.35;
+  }
+
+  .btn-brand-enquire {
+    font-size: 0.75rem;
+  }
+
+  .brands-disclaimer {
+    padding: 14px 16px;
+  }
+
+  /* --- Services Mobile --- */
+  .services-photo-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .service-card-body {
+    padding: 18px;
+  }
+
+  .service-title {
+    font-size: 1.15rem;
+  }
+
+  /* --- Compare Drawer Mobile --- */
+  .compare-drawer {
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+    z-index: 94;
+    padding: 10px 0;
+    border-top: 1px solid var(--accent-red);
+  }
+
+  .compare-drawer-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .compare-drawer-header {
+    justify-content: space-between;
+  }
+
+  .compare-counter {
+    font-size: 0.8125rem;
+  }
+
+  .compare-actions {
+    gap: 8px;
+  }
+
+  .btn-view-compare {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    min-height: 40px;
+  }
+
+  .btn-clear-compare {
+    font-size: 0.75rem;
+  }
+
+  .compare-chip {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+
+  .compare-modal .modal-content {
+    width: 95%;
+    max-height: 86vh;
+    padding: 0;
+    margin: auto;
+  }
+
+  .modal-header {
+    padding: 18px 20px;
+  }
+
+  .modal-body {
+    padding: 18px 16px;
+  }
+
+  /* --- Contact & WhatsApp Composer Mobile --- */
+  .contact-section {
+    overflow: hidden;
+  }
+
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .contact-info-col,
+  .contact-wa-col {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-card {
+    padding: 22px 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .shop-location-card {
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .shop-showcase-photo {
+    width: 100%;
+    height: 180px;
+  }
+
+  .shop-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .shop-location-card .contact-card-content {
+    padding: 20px 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-card.highlight-call {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .card-phone-number {
+    font-size: 1.8rem;
+    word-break: break-all;
+  }
+
+  .btn-call-large {
+    min-height: 48px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wa-composer-card {
+    padding: 22px 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .wa-composer-header {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .wa-composer-body {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .wa-input {
+    height: 48px;
+    font-size: 16px !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .wa-preview-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .btn-whatsapp-submit {
+    min-height: 48px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   VERY NARROW SCREENS (max-width: 420px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 420px) {
+  .btn-wa .btn-wa-label {
+    display: none; /* Icon-only button on tight header */
+  }
+
+  .btn-wa {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-wa svg {
+    margin: 0;
+  }
+
+  .nav-logo-img {
+    height: 30px;
+  }
+
+  .hero-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card-actions {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .btn-product-wa,
+  .btn-toggle-compare {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TINY ANDROID PHONES (max-width: 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .brands-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .brand-photo-stage {
+    min-height: 160px;
+    max-height: 200px;
+  }
+
+  .hero-title {
+    font-size: 1.55rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   DESKTOP ONLY GUARDS
+   -------------------------------------------------------------------------- */
+@media (min-width: 769px) {
+  .mobile-bottom-bar {
+    display: none !important;
+  }
+
+  .nav-backdrop {
+    display: none !important;
+  }
+
+  .nav-drawer-footer {
+    display: none !important;
+  }
+}

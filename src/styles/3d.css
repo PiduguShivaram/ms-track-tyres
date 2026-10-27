@@ -1,0 +1,89 @@
+/* ==========================================================================
+   MS TRACK TYRES — 3D CANVAS & VIEWPORT STYLES
+   ========================================================================== */
+
+/* Fixed Fullscreen 3D Canvas Stage */
+.webgl-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Pointer events are redirected via #explorer-interactive-area */
+  z-index: 1;
+}
+
+.webgl-stage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+/* Fallback Container when WebGL is unsupported */
+.webgl-fallback-container {
+  display: none;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  text-align: center;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: var(--shadow-card);
+}
+
+.webgl-fallback-container.is-active {
+  display: block;
+}
+
+.fallback-badge {
+  display: inline-block;
+  background: rgba(203, 161, 83, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(203, 161, 83, 0.35);
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+
+.fallback-title {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.fallback-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.fallback-schematic {
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 12px dashed #303744;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #1e2430 40%, #0d1015 80%);
+}
+
+.schematic-inner {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-red);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .webgl-stage {
+    opacity: 0.85;
+  }
+}
