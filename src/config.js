@@ -55,8 +55,8 @@ export const BUSINESS_CONFIG = {
     landmark: "Beside Trinity Engineering College, Bandarikunta",
     phone: "7569512495",
     whatsappPhone: "917569512495",
-    logoSrc: "/images/branding/ms-track-tyres-logo.webp",
-    logoFallback: "/images/branding/ms-track-tyres-logo.png",
+    logoSrc: "/images/branding/ms-track-tyres-logo-transparent.png",
+    logoFallback: "/images/branding/ms-track-tyres-logo.webp",
     // Verified promotional spotlight (neutral & accurate, never fabricated)
     offer: {
       badge: "VERIFIED PEDDAPALLI STORE",

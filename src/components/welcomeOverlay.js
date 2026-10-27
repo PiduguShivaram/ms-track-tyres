@@ -99,16 +99,14 @@ export function renderWelcomeOverlay() {
           <!-- Phase 2: Official Business Logo -->
           <div class="welcome-logo-wrap" id="welcome-anim-logo">
             <div class="welcome-logo-halo" aria-hidden="true"></div>
-            <picture>
-              <source srcset="${cfg.logoSrc}" type="image/webp" />
-              <img 
-                src="${cfg.logoFallback || cfg.logoSrc}" 
-                alt="${cfg.businessName} Official Store Logo" 
-                class="welcome-logo-img" 
-                width="240" 
-                height="80" 
-              />
-            </picture>
+            <img 
+              src="${cfg.logoSrc}" 
+              alt="${cfg.businessName} Official Store Logo" 
+              class="welcome-logo-img" 
+              width="250" 
+              height="80" 
+              loading="eager"
+            />
           </div>
 
           <!-- Phase 3A: Business Name & Identity -->
@@ -198,6 +196,11 @@ export function initWelcomeOverlay(onComplete) {
   if (!overlay) {
     if (typeof onComplete === 'function') onComplete();
     return;
+  }
+
+  // Ensure overlay is a direct child of document.body for guaranteed full-screen viewport coverage
+  if (overlay && overlay.parentElement !== document.body) {
+    document.body.appendChild(overlay);
   }
 
   // Lock background body scroll while overlay is showing
